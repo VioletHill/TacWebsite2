@@ -1,0 +1,45 @@
+.homeDiv{
+	width:1200px;
+	height:800px;
+	margin-top:50px;
+	margin-left:auto;
+	margin-right:auto;
+	background-color:blue;
+}
+
+.homeNormalDiv{
+	width:1200px;
+	display:inline-block;
+}
+
+.homeVideoDiv{
+	width:1200px;
+	display:none;
+}
+
+.homeSeeVideo{
+	background-color:red;
+	width:201px;
+	height:31px;
+	margin-left:auto;
+	margin-right:auto;
+	margin-top:200px;
+	background-image:url(Image/adTv.png);
+}
+
+.homeSeeVideo:hover{
+	background-image:url(Image/adTvSelect.png);
+}
+
+.homeVideoPlay{
+	width:800px;
+	background-color:black;
+	margin-left:auto;
+	margin-right:auto;
+}
+
+#homeVideo{
+	width:800px;
+	margin-left:auto;
+	margin-right:auto;
+}
