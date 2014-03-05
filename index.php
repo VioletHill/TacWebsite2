@@ -15,12 +15,14 @@
 	<script src="Navigation/Navigation.js"></script>
 	<script src="Home/Home.js"></script>
 	<script src="Works/Works.js"></script>
+	<script src="Events/Events.js"></script>
   </head>
   
   <body style="height:100px; margin-top:0px;">
   	<?php include 'Navigation/Navigation.php';?>
   	<?php include 'Home/Home.php'?>
  	<?php include 'Works/Works.php'?>
+ 	<?php include 'Events/Events.php'?>
   </body>
   
 </html>

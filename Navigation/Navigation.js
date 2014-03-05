@@ -1,11 +1,16 @@
 var blockHeight=850;
-
+var isShowEventTimeLine=false;
 function resetNavigationDiv(){
 	$offset = $('.placeholder').offset();
 	
 	var offsetY=window.pageYOffset;
 	var alpha=0;
 	var navigationTop=0;
+	//alert(getTop($("#eventStart")));
+	if (!isShowEventTimeLine && offsetY+800>=getTop($("#eventStart"))){
+		isShowEventTimeLine=true;
+		showTimeLine();
+	}
 	
 	if (offsetY<400){
 		alpha=1-offsetY % blockHeight % 40 / 40;
