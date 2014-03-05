@@ -56,7 +56,7 @@ function clickWorksItem($item){
 		'left':itemLeft+'px',
 		'width':itemWidth+'px',
 		'height':itemHeight+'px',
-		'background':'url(Works/Image/item.png)',
+		'background':'url('+ $item.attr("launchImage") + ')',
 		'background-size':'100% 100%',
 		'background-repeat':'no-repeat',
 		'display':'none',
@@ -80,7 +80,6 @@ function closeWorksItem(){
 		'left':itemLeft+'px',
 		'width':itemWidth+'px',
 		'height':itemHeight+'px',
-		'background':'url(Works/Image/item.png)',
 		'background-size':'100% 100%',
 		'background-repeat':'no-repeat',
 		'display':'none',
@@ -94,7 +93,31 @@ function closeWorksItem(){
 	
 }
 
+var nowSelect=1;
+var isAnimate=false;
+function moveGallery(select)
+{
+
+	if (nowSelect==select || isAnimate) return ;
+	isAnimate=true;
+	
+	var gallerDiv = document.getElementsByClassName('galleryDiv')[0];
+	var wheelPosition=($(gallerDiv).width())*(select-1);
+	wheelPosition+=2*(select-1);
+	$(".galleryMoveContainer").animate({left:-wheelPosition},"fast",function(){
+		isAnimate=false;
+		nowSelect=select;
+	});
+}
+
+
 $(".worksDiv").ready(function(){
+		
+	$(".worksItem").hover(function(){
+		$(this).css({'background':'url('+$(this).attr("iconHover")+')' });
+	},function(){
+		$(this).css({'background':'url('+$(this).attr("icon")+')' });
+	});
 	
 	$(".worksItem").click(function(){
 		clickWorksItem($(this));
@@ -102,8 +125,10 @@ $(".worksDiv").ready(function(){
 	});
 	
 	$(".worksIndicateItem").click(function(){
+		
 		$(".worksIndicateItem").removeClass("selected");
 		$(this).addClass("selected");
+		moveGallery(this.id);
 	});
 });
 

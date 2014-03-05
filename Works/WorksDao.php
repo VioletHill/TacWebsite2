@@ -63,9 +63,9 @@ class WorksDao
 			$work->setLaunchImage($row['LaunchImage']);
 			$work->setDescription($row['Description']);
 			$work->setIcon($row['Icon']);
+			$work->setIconHover($row['IconHover']);
 				
-			array_push($this->worksArray,$work);
-			
+			array_push($this->worksArray,$work);		
 		}	
 		$this->closeDatabase();
 		return $this->worksArray;

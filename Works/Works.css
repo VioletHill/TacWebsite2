@@ -5,17 +5,39 @@
 	margin-left:auto;
 	margin-right:auto;
 	background-color:yellow;
+	text-align:center;
 }
 
 .galleryDiv{
 	width:1000px;
+	height:560px;
 	margin-left:auto;
 	margin-right:auto;
 	margin-top:50px;
+	white-space:nowrap;
+	overflow:hidden;
+	text-align:center;
+}
+
+.galleryMoveContainer
+{
+	widht:1200px;
+	height:560px;
+	position:relative;
+	display:inline-block;
+}
+
+
+.galleryMoveSpan{
+	width:1000px;
+	height:560px;
+	text-align:center;
+	position:relative;
+	display:inline-block;
 }
 
 .worksItem{
-	width:300px;
+	width:320px;
 	height:250px;
 	margin-top:20px;
 	float:left; 	
@@ -23,29 +45,25 @@
 }
 
 .worksIndicateDiv{
-	margin-left:auto;
-	margin-right:auto;
-	margin-top:20px;
-	background-color:black;
+	width:1200px;
 	white-space:nowrap;
 	text-align:center;
 }
 
-
 .worksIndicateItem {
     width: 18px;
     height: 18px;
-    margin-left:auto;
-    margin-right:auto;
+	margin-left:10px;
     opacity: 0.5;
     filter: alpha(opacity=50);
     display: inline-block;
-    margin-left:10px;
     background: white;
     border-radius: 50%;
 }
 
 .worksIndicateItem.selected {
     opacity: 1;
-    filter: alpha(opacity=100)
+    filter: alpha(opacity=100);
 }
+
+
