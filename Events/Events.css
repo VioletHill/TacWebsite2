@@ -1,0 +1,35 @@
+#eventStart{
+	background-color:gray;
+	height:800px;
+	width:1200px;
+	margin-left:auto;
+	margin-right:auto;
+	margin-top:40px;
+}
+
+.eventImageDiv{
+	
+	margin-top:70px; 
+	list-style-type:none;
+	text-align:center;
+}
+
+
+.eventImageSpan{
+	display:inline;
+	margin-left:-4px;
+}
+
+.eventImage{
+	width:200px;
+	height:200px;
+	background-size:100% 100%;
+	background-repeat:no-repeat;
+	opacity:0.5;
+}
+
+.eventImageSelect{
+	width:400px;
+	height:200px;
+	opacity:1;
+}

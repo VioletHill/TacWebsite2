@@ -2,7 +2,10 @@
 
 //Á½¸ö×ø±êÖ®¼ä×îĞ¡Ïà²î 100 ×î´ó150 maxDay
 var repeatTime=0;
-var maxRepeatTime=200;
+var maxRepeatTimeLine=50;			//ÔÚÏß»­³öºó ³öÏÖÊ±¼äµãµÄÔË¶¯¹ì¼£  »­Ïß³ÖĞøÊ±¼ä
+var maxRepeatTimeEvent=50;			//ÔË¶¯³ÖĞøÊ±¼ä
+var maxOffsetTimeEvent=10;			//ÔË¶¯×î´óÆ«ÒÆ
+var nowOffsetEventTime;
 var event=["cs19dfsf3P","duefadsfadsfasdfasdfas","TacCodeJam"];
 var eventTime=["2013Feb2","2013Feb5","2014Apr16"];
 
@@ -82,17 +85,35 @@ function getDifferentialDate(dateOne,dateTwo)			//Á½¸öÈÕÆÚ²îÖµÔÚmaxDayÌìÒÔÄÚ ·µ»
 	
 }
 
+function getEventDelayTime(repeatTime,maxRepeatTime,offsetTime,a)	//¼ÓËÙ¶È  Êı×ÖÔ½´ó ¼ÓËÙ¶ÈÔ½Âı
+{
+	if (repeatTime<maxRepeatTime){
+		return Math.min(2,repeatTime*a);
+	}
+	else if (repeatTime==maxRepeatTime+offsetTime) return 100;
+	else if (repeatTime<maxRepeatTime+offsetTime) return (repeatTime-maxRepeatTime)*a+2;
+	else return (maxRepeatTime+2*offsetTime-repeatTime)*a+2;
+}
+
 
 function showTimeLine()
 {
-	if (repeatTime>=maxRepeatTime) return ;
+	if (repeatTime>=maxRepeatTimeLine+maxRepeatTimeEvent+maxOffsetTimeEvent*2) return ;
 	drawTimeLine();
-	drawEvent();
-	if (repeatTime<maxRepeatTime){
+
+	if (repeatTime<maxRepeatTimeLine){
 		repeatTime++;
 		setTimeout("showTimeLine()",10);
 	}
 	else {
+		repeatTime++;
+		
+		nowOffsetEventTime=getOffsetEventTime(repeatTime-maxRepeatTimeLine,maxRepeatTimeEvent,maxOffsetTimeEvent,50)+50;
+		var drawEventAlpha=Math.min((repeatTime-maxRepeatTimeLine)/maxRepeatTimeEvent,1);
+		
+		drawEvent(nowOffsetEventTime, drawEventAlpha);
+		
+		setTimeout("showTimeLine()",getEventDelayTime(repeatTime-maxRepeatTimeLine,maxRepeatTimeEvent,maxOffsetTimeEvent),2);
 	}
 }
 
@@ -111,40 +132,40 @@ function drawTimeLine()
 	var width=canvas.width;
 	var height=canvas.height;
 	ctx.clearRect(0,0,width,height);
-	ctx.globalAlpha=0.2*repeatTime/maxRepeatTime;
+	ctx.globalAlpha=0.2*repeatTime/maxRepeatTimeLine;
 	ctx.lineWidth=4;
 	ctx.beginPath();
 	
 	addLine(0, height/2, width, height/2, ctx);
 }
 
-function drawCircle(x,y,radius,context)
+function drawCircle(x,y,radius,context,alpha)
 {
 	context.fillStyle="red";
-	context.globalAlpha=1*repeatTime/maxRepeatTime;
+	context.globalAlpha=alpha;
 	context.arc(x,y,radius,0,Math.PI*2,true);
 	context.fill();
 }
 
 
-function drawEventLable(x,y,context,eventLabel)
+function drawEventLable(x,y,context,eventLabel,alpha)
 {
 	var maxLabelLength=10;
 	if (eventLabel.length>maxLabelLength){
 		eventLabel=eventLabel.substring(0,maxLabelLength)+"...";
 	}
 	context.fillStyle="black";
-	context.globalAlpha=0.5*repeatTime/maxRepeatTime;
+	context.globalAlpha=alpha;
 	context.font = "bold 15px Arial";  
 	context.textAlign='center';
 	context.fillText(eventLabel,x,y);
 }
 
-function drawEventTimeLable(x,y,context,eventTimeLable)
+function drawEventTimeLable(x,y,context,eventTimeLable,alpha)
 {
 	var label=eventTimeLable.substring(4,7)+' '+eventTimeLable.substring(7);
 	context.fillStyle="black";
-	context.globalAlpha=0.5*repeatTime/maxRepeatTime;
+	context.globalAlpha=alpha;
 	context.font = "bold 15px Arial";  
 	context.textAlign='center';
 	context.fillText(label,x,y);
@@ -157,7 +178,28 @@ var eventTimeLableHeight=25;
 var eventX=new Array();
 var radius;
 
-function drawEvent() {
+function getOffsetEventTime(repeatTime,maxRepeatTime,offsetEventTime,distance)									//·µ»Ø´ËÊ±offsetEventTime  Ò²¾ÍÊÇ ÕâÊ±ºòÊ±¼äµãÓ¦¸ÃÆ«ÒÆµÄÎ»ÖÃ 
+																												//repeatÒÑ¾­ÔËĞĞ´ÎÊı maxRepeatTime ×î´óÔËĞĞ´ÎÊı offsetEventTime Æ«ÒÆ×îÔ¶¾àÀë distanceĞèÒªÒÆ¶¯µÄ×î´ó¾àÀës
+{
+	var offsetEventTime;
+	if (repeatTime>maxRepeatTime){		// Æ«ÒÆ
+		if (repeatTime>offsetEventTime+maxRepeatTime){	//»ØÀ´ÁË
+			offsetEventTime=maxRepeatTime+offsetEventTime-( repeatTime-maxRepeatTime-offsetEventTime);
+			offsetEventTime=offsetEventTime/maxRepeatTime*distance;
+		}
+		else {											//ÍùÍâ¼ÌĞøÆ«ÒÆ
+			offsetEventTime=repeatTime/maxRepeatTime*distance;
+		}
+	}
+	else {
+		offsetEventTime=repeatTime/maxRepeatTime*distance;
+		
+	}
+	return offsetEventTime ;
+}
+
+
+function drawEvent(x,drawEventAlpha) {		//offsetEventTime ĞèÒªµÄÎ»ÖÃ	drawEventAlpha Ä¬ÈÏÍ¸Ã÷¶ÈµÄ°Ù·Ö±È
 	
 	var canvas=document.getElementById('timeEventsCanvas');
 	var ctx=canvas.getContext('2d');
@@ -167,33 +209,71 @@ function drawEvent() {
 	radius=height/2;
 	ctx.clearRect(0,0,width,canvas.height);
 	
-	ctx.beginPath();
 	
-	var x=50;
+	ctx.beginPath();
+
 	for (var i=0; i<event.length; i++){
 		if (i!=0){
 			var distanceX=getDifferentialDate(eventTime[i-1], eventTime[i]);
 			x+=Math.max(distanceX,100);
 		}
 		
-		drawCircle(x, height/2, radius, ctx);
+		drawCircle(x, height/2, radius, ctx,1*drawEventAlpha);
 		
-		drawEventLable(x, height+eventLabelHeight-5, ctx,event[i]);
+		drawEventLable(x, height+eventLabelHeight-5, ctx,event[i],0.5*drawEventAlpha);
 		
-		drawEventTimeLable(x, height+eventLabelHeight+eventTimeLableHeight-5, ctx, eventTime[i]);
+		drawEventTimeLable(x, height+eventLabelHeight+eventTimeLableHeight-5, ctx, eventTime[i],0.5*drawEventAlpha);
 		
 		eventX[i]=x;
 	}
 }
 
+var changeRepeatTime=0;
+var isChange=false;
+
+function changeTime(startX,newX,maxRepeatTime,maxOffset){	//Ê±¼äµãÔË¶¯µ½newOffsetEventTime	//forward ÊÇ·ñÏòÇ°ÒÆ¶¯
+	if (changeRepeatTime>=maxRepeatTime+maxOffset*2){							
+		isChange=false;
+		return ;
+	}
+	
+	nowOffsetEventTime=getOffsetEventTime(changeRepeatTime,maxRepeatTime,maxOffset,newX-startX)+startX;
+
+	drawEvent(nowOffsetEventTime, 1);
+
+	setTimeout(function(){
+		changeTime(startX, newX, maxRepeatTime, maxOffset);
+	},getEventDelayTime(changeRepeatTime,maxRepeatTime,maxOffsetTimeEvent,2));
+	
+	changeRepeatTime++;
+}
+
+
 function clickTimeLine(e){
+	
+	if (isChange) return ;
+	isChange=true;
 	var clickX=e.pageX-getLeft($(".timeLineCanvasDiv")) ;
 	for (var i=0; i<event.length; i++){
 		if (Math.abs(eventX[i]-clickX)<=radius){
-			alert(i);
+			var midPoint=$(".timeLineCanvasDiv").width()/2;
+			var newX=midPoint-(eventX[i]-eventX[0]);
+			var moveDistance=Math.abs(newX-nowOffsetEventTime);
+			changeRepeatTime=0;
+			if (moveDistance<radius){
+				isChange=false;
+				return ;
+			}
+			if (moveDistance<50){
+				changeTime(nowOffsetEventTime,newX,moveDistance,5);
+			}
+			else {
+				changeTime(nowOffsetEventTime,newX,Math.min(70,moveDistance),5);
+			}
 			return ;
 		}
 	}
+	isChange=false;	//Ã»ÓĞ±»µãµ½
 }
 
 //programmer mark 
@@ -203,4 +283,40 @@ $('#timeLine').ready(function (){
 		clickTimeLine(e);
 	});
 });
+
+
+function showImageAtIndex($indexImage)
+{	
+	$(".eventImage").stop();
+	
+	$(".eventImage").not($indexImage).animate({
+		"width":"200px",
+		"height":"200px",
+		"opacity":"0.2",
+	},"0.5");
+	
+	$indexImage.animate({
+		"width":"400px",
+		"height":"200px",
+		"opacity":"1",
+	},"0.5");
+}
+
+$('.eventImageDiv').ready(function(){
+	
+	$(".eventImage:last").addClass("eventImageSelect");
+	
+	$(".eventImage").hover(function(){
+		showImageAtIndex($(this))
+	});
+	
+	$(".eventImage").click(function(){
+		showImageAtIndex($(this))
+	});
+
+});
+
+
+
+
 

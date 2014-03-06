@@ -10,6 +10,7 @@
     <link rel="stylesheet" type="text/css" href="Navigation/Navigation.css">
     <link rel="stylesheet" type="text/css" href="Home/Home.css">
 	<link rel="stylesheet" type="text/css" href="Works/Works.css">
+	<link rel="stylesheet" type="text/css" href="Events/Events.css">
 	
 	<script src="jQuery-2.0.2.js"></script>
 	<script src="Navigation/Navigation.js"></script>
