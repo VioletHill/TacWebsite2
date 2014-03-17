@@ -6,13 +6,49 @@ class WorksBean {
 	private $iconHover;
 	private $launchImage;
 	private $Description;
-	
+	private $screenShoot;
+	private $author;
+	private $itunsLink;
 	
 	public function _construct()
 	{
-		echo "new worksBean";
 	}
 	
+	/**
+	 * @return the $author
+	 */
+	public function getAuthor() {
+		return $this->author;
+	}
+
+	/**
+	 * @return the $itunsLink
+	 */
+	public function getItunsLink() {
+		return $this->itunsLink;
+	}
+
+	/**
+	 * @param field_type $author
+	 */
+	public function setAuthor($author) {
+		$this->author = $author;
+	}
+
+	/**
+	 * @param field_type $itunsLink
+	 */
+	public function setItunsLink($itunsLink) {
+		$this->itunsLink = $itunsLink;
+	}
+
+	/**
+	 * @return the $screenShoot
+	 */
+	public function getScreenShoot() {
+		return $this->screenShoot;
+	}
+
 	/**
 	 *
 	 * @return the $workID
@@ -108,6 +144,14 @@ class WorksBean {
 	public function setDescription($Description) {
 		$this->Description = $Description;
 	}
+	
+	/**
+	 * @param field_type $screenShoot
+	 */
+	public function setScreenShoot($screenShoot) {
+		$this->screenShoot = $screenShoot;
+	}
+	
 }
 
 

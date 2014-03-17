@@ -291,13 +291,13 @@ function showImageAtIndex($indexImage)
 	
 	$(".eventImage").not($indexImage).animate({
 		"width":"200px",
-		"height":"200px",
+		"height":"341px",
 		"opacity":"0.2",
 	},"0.5");
 	
 	$indexImage.animate({
-		"width":"400px",
-		"height":"200px",
+		"width":"512px",
+		"height":"341px",
 		"opacity":"1",
 	},"0.5");
 }
@@ -307,11 +307,11 @@ $('.eventImageDiv').ready(function(){
 	$(".eventImage:last").addClass("eventImageSelect");
 	
 	$(".eventImage").hover(function(){
-		showImageAtIndex($(this))
+		showImageAtIndex($(this));
 	});
 	
 	$(".eventImage").click(function(){
-		showImageAtIndex($(this))
+		//showImageAtIndex($(this));
 	});
 
 });

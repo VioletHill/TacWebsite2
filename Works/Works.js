@@ -5,20 +5,23 @@ var itemHeight;
 var itemTop;
 var itemLeft;
 
-function clickWorksItem($item){
+function clickWorksItem($item)
+{
 	itemTop=getTop($item);
-	
 	itemLeft=getLeft($item);
 	itemWidth=($item).width();
 	itemHeight=($item).height();
-	
+
 	var marginLeft=getLeft($('#worksDiv'))-itemLeft;
 	
 //	var marginTop=getTop($('#worksDiv'))-itemTop;  //呈现在worksDiv上
-	var marginTop=$('body').scrollTop()-itemTop+10;	//呈现在中间;
+	var marginTop=$('body').scrollTop()-itemTop;	//呈现在中间;
 	var worksDivWidth=$('#worksDiv').width();
 	var worksDivHeight=$('#worksDiv').height();
-
+//	
+	
+	var itemId=$item.attr("id");
+	
 	$('body').css({
 		'overflow':'hidden',
 	});
@@ -30,6 +33,7 @@ function clickWorksItem($item){
 		});
 		$('body').append($tempBg);
 	}
+	
 	$tempBg.css({
 		'position':'absolute',
 		'background-color':'black',
@@ -39,6 +43,7 @@ function clickWorksItem($item){
 		'top':$('body').scrollTop()+'px',
 		'left':'0px',
 		'z-index':'997',
+		'overflow':'auto',
 	});
 	
 	$tempBg.show();
@@ -46,33 +51,78 @@ function clickWorksItem($item){
 	
 	if ($tempItem==null){
 
-		$tempItem=$("<div id='tempItem'></div>");
+		$tempItem=$("<div id='tempItem'> <div id='tempItemImage'></div> </div>");
 		$('#startWorks').append($tempItem);
+		$itemShowDiv=$(".itemShowDiv");
+		$itemShowDiv.remove();
+		$tempItem.append($itemShowDiv);
 	}
-		
+	
+	
+	$("#tempItemImage").css({
+		'background':'url('+ $item.attr("launchImage") + ')',
+		'width':worksDivWidth+'px',
+		'height':worksDivHeight+'px',
+		'max-height':'100%',
+		'background-size':'100% 100%',
+		'background-repeat':'no-repeat',
+		'display':'block',
+	});
 	$tempItem.css({
 		'position':'absolute',
-		'top':itemTop+'px',
+		'top':itemTop+20+'px',
 		'left':itemLeft+'px',
 		'width':itemWidth+'px',
 		'height':itemHeight+'px',
-		'background':'url('+ $item.attr("launchImage") + ')',
-		'background-size':'100% 100%',
-		'background-repeat':'no-repeat',
 		'display':'none',
+		'overflow-x':'hidden',
+		'overflow-y':'scroll',
 		'z-index':'998'
-	}).fadeIn("medium").animate({
+	}).fadeIn("fast").animate({
 			'margin-left':marginLeft+'px',
 			'margin-top':marginTop+'px',
 			'width':worksDivWidth+'px',
 			'height':worksDivHeight+'px',
-			'background-color':'pink',
-		},"medium");
-	
+			'height':'100%',
+		},"fast",function(){
+			setTimeout(function(){
+				$("#tempItemImage").fadeOut("fast");
+				$(".itemShowDiv").css({
+					'display':'block',
+					'width':worksDivWidth+'px',
+					'height':worksDivHeight+'px',
+					'overflow-y':'scroll',
+					'z-index':'999',
+				});
+			},"800");
+		});
+	showWork(itemId);
 }	
 
-function closeWorksItem(){
-	$tempItem.animate({
+function showWork(itemId)
+{
+	$.post("Works/WorksItem.php",{id:itemId},function(data){
+		var obj=JSON.parse(data);
+		$(".itemShowName").html(obj.name);
+		$(".itemShowDescription").html(obj.description);
+		var screenImageShootAdd=obj.screenShoot.split(",");
+		var htmlStr="";
+		for (var i=0; i<screenImageShootAdd.length; i++){
+			htmlStr+="<img src='"+screenImageShootAdd[i]+ "'\>";
+		}
+		$(".itemShowScreenShoot").html(htmlStr);
+		
+		$(".itemViewInITunes").click(function(){
+			window.open(obj.itunsLink);
+		});
+	});
+}
+
+
+function closeWorksItem()
+{
+	$(".itemShowDiv").hide();
+	$tempItem.css({
 		'position':'absolute',
 		'margin-left':'0px',
 		'margin-top':'0px',
@@ -84,7 +134,7 @@ function closeWorksItem(){
 		'background-repeat':'no-repeat',
 		'display':'none',
 		'z-index':'998'
-	},"medium").fadeOut('medium',function(){
+	}).fadeOut('fast',function(){
 		$tempBg.hide();
 		$('body').css({
 			'overflow':'auto',
@@ -112,11 +162,10 @@ function moveGallery(select)
 
 
 $(".worksDiv").ready(function(){
-		
 	$(".worksItem").hover(function(){
-		$(this).css({'background':'url('+$(this).attr("iconHover")+')' });
+		$(this).css({'background':'url('+$(this).attr("iconHover")+')', 'background-size':'100% 100%' });
 	},function(){
-		$(this).css({'background':'url('+$(this).attr("icon")+')' });
+		$(this).css({'background':'url('+$(this).attr("icon")+')', 'background-size':'100% 100%' });
 	});
 	
 	$(".worksItem").click(function(){
@@ -130,5 +179,15 @@ $(".worksDiv").ready(function(){
 		$(this).addClass("selected");
 		moveGallery(this.id);
 	});
+});
+
+$(".itemShowDiv").ready(function(){
+	$(".closeShowItem").click(function(){
+		alert("click");
+	});
+});
+
+$("#closeShowItem").click(function(){
+	alert("a");
 });
 

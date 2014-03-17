@@ -43,6 +43,10 @@ $(function(){
 	$(window).scroll(function(){
 		resetNavigationDiv();
 	});
+	
+	$(window).resize(function() {
+		resetNavigationDiv();
+	})
 });
 
 function getTop(elem){

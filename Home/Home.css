@@ -1,19 +1,25 @@
+.homeStart{
+	clear:both;
+	margin-top:70px;
+}
+
 .homeDiv{
-	width:1200px;
-	height:800px;
+	width:1236px;
+	height:541.5px;
 	margin-top:50px;
 	margin-left:auto;
 	margin-right:auto;
-	background-color:blue;
+	background-size:100% 100%;
+	background-repeat:no-repeat;
 }
 
 .homeNormalDiv{
-	width:1200px;
+	width:1236px;
 	display:inline-block;
 }
 
 .homeVideoDiv{
-	width:1200px;
+	width:1236px;
 	display:none;
 }
 
@@ -42,4 +48,21 @@
 	width:800px;
 	margin-left:auto;
 	margin-right:auto;
+}
+
+.homeTitle{
+	margin-top:50px;
+	font-size:28px;
+	color:#079fdd;
+	text-align:center;
+}
+
+.homeP1{
+	text-align:center;
+	color:black;
+}
+
+.homeP2{
+	text-align:center;
+	color:black;
 }

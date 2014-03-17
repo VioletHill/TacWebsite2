@@ -19,7 +19,7 @@
 	<script src="Events/Events.js"></script>
   </head>
   
-  <body style="height:100px; margin-top:0px;">
+  <body>
   	<?php include 'Navigation/Navigation.php';?>
   	<?php include 'Home/Home.php'?>
  	<?php include 'Works/Works.php'?>

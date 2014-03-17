@@ -1,11 +1,16 @@
-<div id="startWorks"></div>
-  
+	<div id="startWorks"></div>
+ 
     <div class="worksDiv" id="worksDiv">
+    	<br>
+    	<br>
+  		<p class="startWorksTitle">OUR WORKS</p>
+  		
     	<div class="galleryDiv">
     		<div class="galleryMoveContainer">
     			<?php
     				require_once ('WorksDao.php');
     				require_once ('WorksBean.php');
+    				   				
     				$pageItemCount=6;
     				$worksArray=WorksDao::sharedWorksDao()->getAllData();
     				for ($i=1; $i<=(count($worksArray)-1)/$pageItemCount+1; $i++)
@@ -14,12 +19,12 @@
        					for ($j=($i-1)*$pageItemCount; $j<min($pageItemCount*$i,count($worksArray) ); $j++)
     					{
     						$item=$worksArray[$j];
-    					//	$itemId=$item->getWorkID();
+    						$itemId=$item->getWorkID();
     						$itemIcon=$item->getIcon();
     						
     						$itemHover=$item->getIconHover();
     						$itemLaunchImage=$item->getLaunchImage();
-    						echo  "<div class=\"worksItem\" style=\"background:url($itemIcon)\"  icon=\"$itemIcon\" launchImage=\"$itemLaunchImage\"  iconHover=\"$itemHover\"></div>" ;		
+    						echo  "<div class=\"worksItem\" style=\"background:url($itemIcon); background-repeat:no-repeat; background-size:100% 100%; \" id=\"$itemId\" icon=\"$itemIcon\" launchImage=\"$itemLaunchImage\"  iconHover=\"$itemHover\"></div>" ;		
     					}
     					echo "</span>";
     				}
@@ -37,5 +42,23 @@
     				echo "<a class=\"worksIndicateItem\" id=\"$i\"></a>" ;
     			}
     		?>
-    	</span>
-  </div>
+    	</span>    	
+  	</div>
+<!--   	tempItem -->
+  	<div class="itemShowDiv">
+    	<div class="itemIcon">
+    		<div class="closeShowItem"></div>
+    		<h1 class="itemShowName"></h1>
+    		<img src="Works/Image/abc.png" class="itemShowIcon">
+    		<div class="itemViewInITunes">View In iTunes</div>
+    		<p style="color: red">Author:xxx</p>
+    	</div>
+    	<div class="itemDescription">
+    		<h1>Description</h1>
+    		<div class="itemShowDescription"></div>
+   			<div class="itemShowScreenShoot">
+    		</div>
+    	</div>
+
+    </div>
+

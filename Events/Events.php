@@ -7,9 +7,9 @@
 	</div>
 	
 	<div class="eventImageDiv" >
-		<span class="eventImageSpan"><img class="eventImage" src="Events/Image/item.png"></span>
-		<span class="eventImageSpan"><img class="eventImage" src="Events/Image/item.png"></span>
-		<span class="eventImageSpan"><img class="eventImage" src="Events/Image/item.png"></span>
-		<span class="eventImageSpan"><img class="eventImage" src="Events/Image/item.png"></span>
+		<span class="eventImageSpan"><img class="eventImage" src="Events/Image/5.jpg"></span>
+		<span class="eventImageSpan"><img class="eventImage" src="Events/Image/7.jpg"></span>
+		<span class="eventImageSpan"><img class="eventImage" src="Events/Image/8.jpg"></span>
+		<span class="eventImageSpan"><img class="eventImage" src="Events/Image/9.jpg"></span>
 	</div>
 </div>

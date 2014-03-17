@@ -1,5 +1,5 @@
 .placeholder{
-	width:1280px;
+	width:1234px;
 	margin-left:auto;
 	margin-right:auto;
 }
@@ -7,13 +7,13 @@
 .mainNavigationDiv{
 	width:1280px;
 	height:40px;
-	background-color:red;
 }
 
 .logo{
 	display:inline-block;
 	width:219px;
 	height:40px;
+	margin-left:200px;
 }
 
 .navigationMenu{
@@ -31,15 +31,14 @@
 	text-align:center;
 
 	font-family:"Times New Roman";
-	font-size:10px;
-	color:blue;
-	background:green;
+	font-size:20px;
+	color:#079fdd;
 	
 }
 
 .navigationItem:hover{
-	border-radius:2px;
+	border-radius:5px;
 	color:white;
-	background-color:blue;
+	background-color:#079fdd;
 }
 
