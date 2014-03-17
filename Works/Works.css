@@ -52,7 +52,6 @@
 .worksItem{
 	width:320px;
 	height:250px;
-	border-radius:15px;
 	margin-top:20px;
 	float:left;
 	overflow:hidden;	
@@ -155,6 +154,7 @@
 	white-space:nowrap;
 	max-width:618px;
 	max-height:618px;
+	margin-left:10px;
 	background-size:100% 100%;
 	background-repeat:no-repeat;
 }
@@ -162,5 +162,9 @@
 .closeShowItem{
 	width:44px;
 	height:44px;
+	
+}
+
+.itemAuthor{
 	
 }

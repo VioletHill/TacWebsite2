@@ -94,7 +94,7 @@ function clickWorksItem($item)
 					'overflow-y':'scroll',
 					'z-index':'999',
 				});
-			},"800");
+			},"600");
 		});
 	showWork(itemId);
 }	
@@ -113,6 +113,9 @@ function showWork(itemId)
 		
 		$(".itemShowScreenShoot").html(htmlStr);
 		$('.itemViewInITunes').attr('href',obj.itunsLink); 
+		
+		$(".itemAuthor").html(obj.author);
+		
 		$('.itemViewInITunes').unbind("click");
 		$(".itemViewInITunes").click(function(){
 			window.open(obj.itunsLink);
@@ -165,9 +168,9 @@ function moveGallery(select)
 
 $(".worksDiv").ready(function(){
 	$(".worksItem").hover(function(){
-		$(this).css({'background':'url('+$(this).attr("iconHover")+')', 'background-size':'100% 100%' });
+		$(this).css({'background':'url('+$(this).attr("iconHover")+')', 'background-size':'100% 100%','cursor':'pointer' });
 	},function(){
-		$(this).css({'background':'url('+$(this).attr("icon")+')', 'background-size':'100% 100%' });
+		$(this).css({'background':'url('+$(this).attr("icon")+')', 'background-size':'100% 100%','cursor':'default' });
 	});
 	
 	$(".worksItem").click(function(){

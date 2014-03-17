@@ -3,7 +3,7 @@
     <div class="worksDiv" id="worksDiv">
     	<br>
     	<br>
-  		<p class="startWorksTitle">OUR WORKS</p>
+  		<p class="startWorksTitle">WORKS</p>
   		
     	<div class="galleryDiv">
     		<div class="galleryMoveContainer">
@@ -51,7 +51,7 @@
     		<h1 class="itemShowName"></h1>
     		<img src="Works/Image/abc.png" class="itemShowIcon">
     		<div class="itemViewInITunes">View In iTunes</div>
-    		<p style="color: red">Author:xxx</p>
+    		<p class="itemAuthor"></p>
     	</div>
     	<div class="itemDescription">
     		<h1>Description</h1>

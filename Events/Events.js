@@ -6,8 +6,9 @@ var maxRepeatTimeLine=50;			//在线画出后 出现时间点的运动轨迹  画线持续时间
 var maxRepeatTimeEvent=50;			//运动持续时间
 var maxOffsetTimeEvent=10;			//运动最大偏移
 var nowOffsetEventTime;
-var event=["cs19dfsf3P","duefadsfadsfasdfasdfas","TacCodeJam"];
-var eventTime=["2013Feb2","2013Feb5","2014Apr16"];
+var event=new Array();
+var eventTime=new Array();
+var eventImage=new Array();
 
 function getMonthNo(monthStr)			//根据一个month的字符串转化为数字返回
 {
@@ -132,16 +133,16 @@ function drawTimeLine()
 	var width=canvas.width;
 	var height=canvas.height;
 	ctx.clearRect(0,0,width,height);
+	ctx.strokeStyle="#61c0d7";
 	ctx.globalAlpha=0.2*repeatTime/maxRepeatTimeLine;
 	ctx.lineWidth=4;
 	ctx.beginPath();
-	
+	ctx.globalAlpha=0.2;
 	addLine(0, height/2, width, height/2, ctx);
 }
 
 function drawCircle(x,y,radius,context,alpha)
 {
-	context.fillStyle="red";
 	context.globalAlpha=alpha;
 	context.arc(x,y,radius,0,Math.PI*2,true);
 	context.fill();
@@ -198,6 +199,7 @@ function getOffsetEventTime(repeatTime,maxRepeatTime,offsetEventTime,distance)		
 	return offsetEventTime ;
 }
 
+var selectEvent=1;
 
 function drawEvent(x,drawEventAlpha) {		//offsetEventTime 需要的位置	drawEventAlpha 默认透明度的百分比
 	
@@ -206,11 +208,10 @@ function drawEvent(x,drawEventAlpha) {		//offsetEventTime 需要的位置	drawEventAl
 	
 	var width=canvas.width;
 	var height=canvas.height-eventLabelHeight-eventTimeLableHeight;
-	radius=height/2;
+	radius=8;
 	ctx.clearRect(0,0,width,canvas.height);
 	
-	
-	ctx.beginPath();
+	var circleAlpha;
 
 	for (var i=0; i<event.length; i++){
 		if (i!=0){
@@ -218,7 +219,22 @@ function drawEvent(x,drawEventAlpha) {		//offsetEventTime 需要的位置	drawEventAl
 			x+=Math.max(distanceX,100);
 		}
 		
-		drawCircle(x, height/2, radius, ctx,1*drawEventAlpha);
+		if (selectEvent!=i){
+			ctx.lineWidth=0;
+			ctx.fillStyle="#61c0d7";
+			ctx.strokeStyle="#61c0d7";
+			circleAlpha=0.8*drawEventAlpha;
+		}
+		else {
+			ctx.lineWidth=5;
+			ctx.strokeStyle="white"
+			ctx.fillStyle="#97c13c";
+			circleAlpha=drawEventAlpha;
+		}
+		
+		ctx.beginPath();
+		drawCircle(x, height/2, radius, ctx,1*circleAlpha);
+		if (selectEvent==i)	ctx.stroke();
 		
 		drawEventLable(x, height+eventLabelHeight-5, ctx,event[i],0.5*drawEventAlpha);
 		
@@ -251,35 +267,78 @@ function changeTime(startX,newX,maxRepeatTime,maxOffset){	//时间点运动到newOffse
 
 function clickTimeLine(e){
 	
-	if (isChange) return ;
+	if (isChange) return ;		//isChange变量判断动画是否在执行中 如果在执行 则直接退出
 	isChange=true;
 	var clickX=e.pageX-getLeft($(".timeLineCanvasDiv")) ;
 	for (var i=0; i<event.length; i++){
 		if (Math.abs(eventX[i]-clickX)<=radius){
+			
 			var midPoint=$(".timeLineCanvasDiv").width()/2;
 			var newX=midPoint-(eventX[i]-eventX[0]);
+		
 			var moveDistance=Math.abs(newX-nowOffsetEventTime);
 			changeRepeatTime=0;
 			if (moveDistance<radius){
 				isChange=false;
 				return ;
 			}
-			if (moveDistance<50){
-				changeTime(nowOffsetEventTime,newX,moveDistance,5);
-			}
-			else {
-				changeTime(nowOffsetEventTime,newX,Math.min(70,moveDistance),5);
-			}
+			changeSelectImage(i);				//确定点击了第i个
+			
+//			if (moveDistance<50){											//移动代码
+//				changeTime(nowOffsetEventTime,newX,moveDistance,5);
+//			}
+//			else {
+//				changeTime(nowOffsetEventTime,newX,Math.min(70,moveDistance),5);
+//			}
+			
+			drawEvent(eventX[0], 1);			//以下两句话是非移动代码
+			isChange=false;
 			return ;
 		}
 	}
 	isChange=false;	//没有被点到
 }
 
-//programmer mark 
+
+function changeSelectImage(selectIndex)
+{
+	if (selectEvent==selectIndex) return ;
+	var isFirst=true;						//.eventImage 会使得下面的fadeOut执行4次
+	selectEvent=selectIndex;
+	$(".eventImage").fadeOut("slow",function(){
+		if (isFirst){
+			var image=eventImage[selectIndex].split(',');
+			for (var i=0; i<4; i++){
+				$($(".eventImage")[i]).attr("src",image[i]);
+			}
+			$(".eventImage").fadeIn("slow");
+			isFirst=false;
+		}
+		
+	});
+}
+
+
+function getEvent()		//获取与event相关的变量
+{
+	$.post("Events/EventsItem.php",function(data){
+		var eventArray=data.split(';');
+		eventArray.pop();		//splite 的时候 多了最后一个元素
+		for (var i=0; i<eventArray.length; i++){
+			var jsonObj=JSON.parse(eventArray[i]);
+			eventTime[i]=jsonObj.date;
+			event[i]=jsonObj.event;
+			eventImage[i]=jsonObj.eventImage;
+		}
+	});
+}
 
 $('#timeLine').ready(function (){
-	$(".timeLineCanvasDiv").click(function (e){
+	
+	
+	getEvent();
+	
+	$(".timeLineCanvasDiv").click(function (e){	
 		clickTimeLine(e);
 	});
 });
@@ -287,16 +346,16 @@ $('#timeLine').ready(function (){
 
 function showImageAtIndex($indexImage)
 {	
-	$(".eventImage").stop();
+	$(".eventImageItemDiv").stop();
 	
-	$(".eventImage").not($indexImage).animate({
-		"width":"200px",
+	$(".eventImageItemDiv").not($indexImage).animate({
+		"width":"246.8px",
 		"height":"341px",
 		"opacity":"0.2",
 	},"0.5");
 	
 	$indexImage.animate({
-		"width":"512px",
+		"width":"493.6px",
 		"height":"341px",
 		"opacity":"1",
 	},"0.5");
@@ -304,18 +363,21 @@ function showImageAtIndex($indexImage)
 
 $('.eventImageDiv').ready(function(){
 	
-	$(".eventImage:last").addClass("eventImageSelect");
+	$(".eventImageItemDiv:last").css({
+		"width":"493.6px",
+		"height":"341px",
+		"opacity":"1",
+	});
 	
-	$(".eventImage").hover(function(){
+	$(".eventImageItemDiv").hover(function(){
 		showImageAtIndex($(this));
 	});
 	
-	$(".eventImage").click(function(){
-		//showImageAtIndex($(this));
+	$(".eventImageItemDiv").click(function(){
+		showImageAtIndex($(this));
 	});
 
 });
-
 
 
 

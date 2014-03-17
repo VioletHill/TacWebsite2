@@ -7,6 +7,11 @@ class HomeBean{
 	/**
 	 * @return the $id
 	 */
+	
+	public function _construct()
+	{
+	}
+	
 	public function getId() {
 		return $this->id;
 	}

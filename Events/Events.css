@@ -1,11 +1,18 @@
+
 #eventStart{
 	background-color:gray;
 	height:800px;
 	width:1236px;
 	margin-left:auto;
 	margin-right:auto;
-	margin-top:40px;
 }
+
+.startEventsTitle{
+	text-align:center;
+	font-size:25px;
+	color:white;
+}
+
 
 .eventImageDiv{
 	
@@ -15,21 +22,26 @@
 }
 
 
-.eventImageSpan{
-	display:inline;
-	margin-left:-4px;
-}
-
-.eventImage{
-	width:200px;
+.eventImageItemDiv{
+	display:inline-block;
+	width:246.8px;
 	height:341px;
-	background-size:100% 100%;
-	background-repeat:no-repeat;
+	overflow:hidden;
+	margin-left:-4px;
 	opacity:0.5;
 }
 
-.eventImageSelect{
-	width:512px;
-	height:341px;
-	opacity:1;
+.timeLineCanvasDiv{
+	width:1234px;
+	height:30px;
+}
+
+#timeLineCanvas{
+}
+
+
+
+#timeEventsCanvas{
+	position:relative;
+	top:-35px;
 }
