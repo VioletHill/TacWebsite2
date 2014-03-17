@@ -9,7 +9,7 @@
 	
 	if ($workItem)
 	{
-		$json=array('name'=>$workItem->getName(),'description'=>$workItem->getDescription(),'screenShoot'=>$workItem->getScreenShoot());
+		$json=array('name'=>$workItem->getName(),'description'=>$workItem->getDescription(),'screenShoot'=>$workItem->getScreenShoot(),'itunsLink'=>$workItem->getItunsLink());
 		echo json_encode($json);
 	}
 	else

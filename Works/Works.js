@@ -70,7 +70,7 @@ function clickWorksItem($item)
 	});
 	$tempItem.css({
 		'position':'absolute',
-		'top':itemTop+20+'px',
+		'top':itemTop+'px',
 		'left':itemLeft+'px',
 		'width':itemWidth+'px',
 		'height':itemHeight+'px',
@@ -110,8 +110,10 @@ function showWork(itemId)
 		for (var i=0; i<screenImageShootAdd.length; i++){
 			htmlStr+="<img src='"+screenImageShootAdd[i]+ "'\>";
 		}
-		$(".itemShowScreenShoot").html(htmlStr);
 		
+		$(".itemShowScreenShoot").html(htmlStr);
+		$('.itemViewInITunes').attr('href',obj.itunsLink); 
+		$('.itemViewInITunes').unbind("click");
 		$(".itemViewInITunes").click(function(){
 			window.open(obj.itunsLink);
 		});
@@ -183,11 +185,8 @@ $(".worksDiv").ready(function(){
 
 $(".itemShowDiv").ready(function(){
 	$(".closeShowItem").click(function(){
-		alert("click");
+		
 	});
 });
 
-$("#closeShowItem").click(function(){
-	alert("a");
-});
 
