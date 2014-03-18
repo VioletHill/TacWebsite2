@@ -216,7 +216,7 @@ function drawEvent(x,drawEventAlpha) {		//offsetEventTime 需要的位置	drawEventAl
 	for (var i=0; i<event.length; i++){
 		if (i!=0){
 			var distanceX=getDifferentialDate(eventTime[i-1], eventTime[i]);
-			x+=Math.max(distanceX,100);
+			x+=Math.max(distanceX,70);
 		}
 		
 		if (selectEvent!=i){

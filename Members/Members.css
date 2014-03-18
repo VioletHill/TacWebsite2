@@ -1,0 +1,99 @@
+.membersDiv{
+	width:1236px;
+	height:468px;
+	margin-left:auto;
+	margin-right:auto;
+}
+
+.startMembersTitle{
+	text-align:center;
+	font-size:25px;
+	color:#61c0d7;
+}
+
+.membersList{
+	width:1236px;
+	height:600px;
+}
+
+.membersListContainer{
+	width:969px;
+	height:300px;
+	margin-left:auto;
+	margin-right:auto;
+	overflow:hidden;
+}
+
+.membersMoveContainer{
+	position:relative;
+	white-space:nowrap;
+}
+
+.membersBox{
+	width:323px;
+	display:inline-block;
+	margin-left:-4px;
+	text-align:center;
+	position:relative;
+	left:4px;
+	/* 77 */
+}
+
+.membersItem{
+	width:256px;
+	height:256px;
+	background-color:#61c0d7;
+	border-radius:50% 50%;
+	overflow:hidden;
+	text-align:center;
+	
+	position:relative;
+	margin-left:auto;
+	margin-right:auto;
+}
+
+.membersItemImage{
+	width:250px;
+	height:250px;
+	border-radius:50% 50%;
+	margin-top:3px;
+	overflow:hidden;
+	cursor:point;
+}
+
+.membersInfo{
+	color:#34aecc;
+	opacity:0.2;
+	font-size:25px;
+}
+
+.membersInfoSelect{
+	color:#34aecc;
+	opacity:1;
+}
+
+.membersIndicateDiv{
+	width:1236px;
+	height:50px;
+	white-space:nowrap;
+	text-align:center;
+	margin-left:auto;
+	margin-right:auto;
+	margin-top:20px;
+}
+
+.membersIndicateItem {
+    width: 18px;
+    height: 18px;
+	margin-left:10px;
+    opacity: 0.5;
+    filter: alpha(opacity=50);
+    display: inline-block;
+    background: #34aecc;
+    border-radius: 50%;
+}
+
+.membersIndicateItem.membersIndicateSelected {
+    opacity: 1;
+    filter: alpha(opacity=100);
+}

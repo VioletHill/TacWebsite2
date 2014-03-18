@@ -1,6 +1,7 @@
 
 
-<div id="eventStart">
+<div id="startEvents"></div>
+<div class="eventsDiv">
 	<br>
 	<br>
 	<p class="startEventsTitle">EVENTS</p>

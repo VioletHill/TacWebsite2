@@ -1,12 +1,13 @@
 .placeholder{
-	width:1234px;
+	width:1236px;
 	margin-left:auto;
 	margin-right:auto;
 }
 
 .mainNavigationDiv{
-	width:1280px;
+	width:1236px;
 	height:40px;
+	background-color:white;
 }
 
 .logo{

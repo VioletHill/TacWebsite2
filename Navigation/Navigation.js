@@ -7,7 +7,7 @@ function resetNavigationDiv(){
 //	var alpha=0;
 //	var navigationTop=0;
 
-	if (!isShowEventTimeLine && offsetY+800>=getTop($("#eventStart"))){
+	if (!isShowEventTimeLine && offsetY+800>=getTop($("#startEvents"))){
 		isShowEventTimeLine=true;
 		showTimeLine();
 	}
@@ -51,9 +51,8 @@ $(function(){
 
 function getTop(elem){
 	var e=elem[0];
-	if (!e) e=elem;								//´«µİµÄÎŞÂÛÊÇjqueryÔªËØ»¹ÊÇdomÔªËØ ÔÚÕâÀï¶¼±»»®ÎªdomÔªËØ
-												//jqueryÔªËØÎªÒ»¸öÊı×é Òò´Ë×ª»¯ÎªdomÔªËØÖ»Òªget(0) »òÕß[0] ¾Í¿ÉÒÔ
-												//!eµÄÒâË¼ÊÇ e=undefined ¼´´«domÔªËØÊ±£¬e=elem[0]ºó eÊÇÒ»¸öundefined
+	if (!e) e=elem;								//è¿™é‡Œä¿è¯æ— è®ºå¸¦è¿›æ¥çš„æ˜¯htmlå…ƒç´ è¿˜æ˜¯ jqueryå…ƒç´ éƒ½å¯ä»¥
+	
 	var offset=e.offsetTop;
 	if (e.offsetParent!=null) offset+=getTop(e.offsetParent);
 	return offset;

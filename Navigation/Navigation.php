@@ -7,8 +7,9 @@
     		<script>
     			resetNavigationDiv();
     		</script>
-    		<a href="#worksDiv"><span class="navigationItem">EVENTS</span></a>
-    		<a href="#worksDiv"><span class="navigationItem">WORKS</span></a>
-    		<a href="#worksDiv"><span class="navigationItem">TEAMS</span></a>
+
+    		<a href="#startWorks"><span class="navigationItem">WORKS</span></a>
+    		<a href="#startMembers"><span class="navigationItem">MEMBERS</span></a>
+    		<a href="#startEvents"><span class="navigationItem">EVENTS</span></a>
     	</div>
     </div>

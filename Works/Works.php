@@ -34,7 +34,7 @@
     	</div>
     	
     	<div style="clear:both"></div>
-    	<span class="worksIndicateDiv">
+    	<div class="worksIndicateDiv">
     		<?php
     			echo "<a class=\"worksIndicateItem selected\" id=\"1\"></a>" ;
     			for ($i=2; $i<=(count($worksArray)-1)/$pageItemCount+1; $i++)
@@ -42,7 +42,7 @@
     				echo "<a class=\"worksIndicateItem\" id=\"$i\"></a>" ;
     			}
     		?>
-    	</span>    	
+    	</div>    	
   	</div>
 <!--   	tempItem -->
   	<div class="itemShowDiv">
