@@ -68,10 +68,11 @@
 }
 
 .homeTitle{
-	margin-top:100px;
 	font-size:28px;
 	color:#079fdd;
 	text-align:center;
+	margin-top:-10px;
+	font-family:"Myriad Pro" "Times New Roman";
 }
 
 .homeP1{
@@ -79,10 +80,12 @@
 	font-size:16px;
 	color:black;
 	margin-top:50px;
+	font-family:"Myriad Pro" "Times New Roman";
 }
 
 .homeP2{
 	text-align:center;
 	font-size:16px;
 	color:black;
+	font-family:"Myriad Pro" "Times New Roman";
 }

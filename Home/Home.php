@@ -23,9 +23,9 @@
 ?>
 
 	<div>
-		<p class="homeTitle">DESIGE DEVELOP BUILD INNOVATE</p>
-		<p class="homeP1">Our members are doing incredible things with XXX's Projuects and the technology they have inspired. Our members are doing incredible</p>
-		<p class="homeP2">things with XXX's products and the technology they have inspired.</p>
+		<p class="homeTitle">DESIGN. CODE. BUILD. INNOVATE</p>
+		<p class="homeP1">The only way of knowing how fantastic things are is making it by yourself.</p>
+		<p class="homeP2">Here's where it all happens for Apple developers.</p>
 	</div>
 		
 </div>

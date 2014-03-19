@@ -7,6 +7,7 @@
 }
 
 .startMembersTitle{
+	font-family:"Myriad Pro" "Times New Roman";
 	text-align:center;
 	font-size:25px;
 	color:#61c0d7;
@@ -63,9 +64,12 @@
 }
 
 .membersInfo{
+	font-family:"Myriad Pro" "Times New Roman";
+	margin-top:20px;
 	color:#34aecc;
 	opacity:0.5;
-	font-size:25px;
+	font-size:18px;
+	
 }
 
 .membersInfoSelect{
