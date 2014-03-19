@@ -6,7 +6,7 @@
     <meta http-equiv="description" content="this is my page">
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     
-    <title>ͬ�ô�ѧ</title>
+    <title>同济大学苹果俱乐部</title>
     
     
     <link rel="stylesheet" type="text/css" href="Navigation/Navigation.css">
@@ -14,6 +14,8 @@
 	<link rel="stylesheet" type="text/css" href="Works/Works.css">
 	<link rel="stylesheet" type="text/css" href="Members/Members.css">
 	<link rel="stylesheet" type="text/css" href="Events/Events.css">
+	<link rel="stylesheet" type="text/css" href="Contact/Contact.css">
+	<link rel="stylesheet" type="text/css" href="Footer/Footer.css">
 	
 	<script src="jQuery-2.0.2.js"></script>
 	<script src="Navigation/Navigation.js"></script>
@@ -21,6 +23,7 @@
 	<script src="Works/Works.js"></script>
 	<script src="Members/Members.js"></script>
 	<script src="Events/Events.js"></script>
+	<script src="Contact/Contact.js"></script>
   </head>
   
   <body>
@@ -30,6 +33,8 @@
  	<?php include 'Works/Works.php'?>
  	<?php include 'Members/Members.php'?>
  	<?php include 'Events/Events.php'?>
+ 	<?php include 'Contact/Contact.php'?>
+ 	<?php include 'Footer/Footer.php'?>
   </body>
   
 </html>

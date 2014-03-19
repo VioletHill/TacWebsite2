@@ -1,7 +1,6 @@
-	<div id="startWorks"></div>
+	<div id="startWorks" style="height:60px; margin-top:0px"></div>
  
     <div class="worksDiv" id="worksDiv">
-    	<br>
     	<br>
   		<p class="startWorksTitle">WORKS</p>
   		
@@ -45,20 +44,20 @@
     	</div>    	
   	</div>
 <!--   	tempItem -->
-  	<div class="itemShowDiv">
-    	<div class="itemIcon">
-    		<div class="closeShowItem"></div>
-    		<h1 class="itemShowName"></h1>
-    		<img src="Works/Image/abc.png" class="itemShowIcon">
-    		<div class="itemViewInITunes">View In iTunes</div>
-    		<p class="itemAuthor"></p>
-    	</div>
-    	<div class="itemDescription">
-    		<h1>Description</h1>
-    		<div class="itemShowDescription"></div>
-   			<div class="itemShowScreenShoot">
-    		</div>
-    	</div>
+<!--   	<div class="itemShowDiv"> -->
+<!--     	<div class="itemIcon"> -->
+<!--     		<div class="closeShowItem"></div> -->
+<!--     		<h1 class="itemShowName"></h1> -->
+<!--     		<img src="Works/Image/abc.png" class="itemShowIcon"> -->
+<!--     		<div class="itemViewInITunes">View In iTunes</div> -->
+<!--     		<p class="itemAuthor"></p> -->
+<!--     	</div> -->
+<!--     	<div class="itemDescription"> -->
+<!--     		<h1>Description</h1> -->
+<!--     		<div class="itemShowDescription"></div> -->
+<!--    			<div class="itemShowScreenShoot"> -->
+<!--     		</div> -->
+<!--     	</div> -->
 
-    </div>
+<!--     </div> -->
 

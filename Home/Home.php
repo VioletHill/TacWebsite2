@@ -2,7 +2,7 @@
 <div class="homeStart">
 
 <?php 
-	echo " <div class=\"homeDiv\"  id=\"homeDiv\" style=\"background-image:url(Home/Image/background.png) \">";
+	echo " <div class=\"homeDiv\"  id=\"homeDiv\">";
 ?>
 
     <div class="homeNormalDiv">
@@ -11,6 +11,8 @@
    	</div>
    	<div class="homeVideoDiv">
    		<div class="homeVideoPlay">
+   			<div class="videoClose">
+   			</div>
    			<video id="homeVideo" src="Home/adTv.mp4" controls="controls" onended="videoEnd()">
 			</video>
 		</div>

@@ -1,4 +1,4 @@
-<div id="startMembers"></div>
+<div id="startMembers" style="height:60px; margin-top:-60px"></div>
 
 <div class="membersDiv">
 	<br>
@@ -32,7 +32,7 @@
     						echo "<img class=\"membersItemImage\" src=\" $itemProfilePicture \">";
     						echo "</a>";
     						echo "</div>";
-    						echo "<div class=\"membersInfo\"> $itemName/$itemProfession </div>";
+    						echo "<div class=\"membersInfo\"> $itemName / $itemProfession </div>";
     						echo "</div>";
     					}
     				}

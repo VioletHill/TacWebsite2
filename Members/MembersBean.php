@@ -1,4 +1,4 @@
-<?php
+<?php 
 class MembersBean {
 	private $membersID;
 	private $name;

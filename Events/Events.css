@@ -1,8 +1,8 @@
 
 .eventsDiv{
 	background-color:#34aecc;
-	height:600px;
 	width:1236px;
+	height:600px;
 	margin-left:auto;
 	margin-right:auto;
 }
@@ -15,24 +15,24 @@
 
 
 .eventImageDiv{
-	
-	margin-top:70px; 
-	list-style-type:none;
+	background-color:#1a1a1a;
+	margin-top:100px; 
 	text-align:center;
+	white-space:nowrap;
 }
 
 
 .eventImageItemDiv{
 	display:inline-block;
-	width:246.8px;
+	width:247.2px;
 	height:341px;
 	overflow:hidden;
-	margin-left:-4px;
-	opacity:0.5;
+	opacity:0.2;
 }
 
 .timeLineCanvasDiv{
 	width:1236px;
+	margin-top:50px;
 	height:30px;
 }
 

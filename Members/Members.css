@@ -1,6 +1,7 @@
 .membersDiv{
 	width:1236px;
 	height:468px;
+	height:600px;
 	margin-left:auto;
 	margin-right:auto;
 }
@@ -13,12 +14,12 @@
 
 .membersList{
 	width:1236px;
-	height:600px;
 }
 
 .membersListContainer{
 	width:969px;
-	height:300px;
+	height:350px;
+	margin-top:80px;
 	margin-left:auto;
 	margin-right:auto;
 	overflow:hidden;
@@ -63,7 +64,7 @@
 
 .membersInfo{
 	color:#34aecc;
-	opacity:0.2;
+	opacity:0.5;
 	font-size:25px;
 }
 
@@ -79,7 +80,6 @@
 	text-align:center;
 	margin-left:auto;
 	margin-right:auto;
-	margin-top:20px;
 }
 
 .membersIndicateItem {

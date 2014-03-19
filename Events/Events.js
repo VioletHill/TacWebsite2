@@ -1,16 +1,17 @@
+
 //programmer mark --  time line
 
-//Á½¸ö×ø±êÖ®¼ä×îĞ¡Ïà²î 100 ×î´ó150 maxDay
+//ä¸¤ä¸ªåæ ‡ä¹‹é—´æœ€å°ç›¸å·® 100 æœ€å¤§150 maxDay
 var repeatTime=0;
-var maxRepeatTimeLine=50;			//ÔÚÏß»­³öºó ³öÏÖÊ±¼äµãµÄÔË¶¯¹ì¼£  »­Ïß³ÖĞøÊ±¼ä
-var maxRepeatTimeEvent=50;			//ÔË¶¯³ÖĞøÊ±¼ä
-var maxOffsetTimeEvent=10;			//ÔË¶¯×î´óÆ«ÒÆ
+var maxRepeatTimeLine=50;			//åœ¨çº¿ç”»å‡ºå å‡ºç°æ—¶é—´ç‚¹çš„è¿åŠ¨è½¨è¿¹  ç”»çº¿æŒç»­æ—¶é—´
+var maxRepeatTimeEvent=50;			//è¿åŠ¨æŒç»­æ—¶é—´
+var maxOffsetTimeEvent=10;			//è¿åŠ¨æœ€å¤§åç§»
 var nowOffsetEventTime;
 var event=new Array();
 var eventTime=new Array();
 var eventImage=new Array();
 
-function getMonthNo(monthStr)			//¸ù¾İÒ»¸ömonthµÄ×Ö·û´®×ª»¯ÎªÊı×Ö·µ»Ø
+function getMonthNo(monthStr)			//æ ¹æ®ä¸€ä¸ªmonthçš„å­—ç¬¦ä¸²è½¬åŒ–ä¸ºæ•°å­—è¿”å›
 {
 	monthStr=monthStr.substring(0,3);
 	if (monthStr=="Jan") return 1;
@@ -27,7 +28,7 @@ function getMonthNo(monthStr)			//¸ù¾İÒ»¸ömonthµÄ×Ö·û´®×ª»¯ÎªÊı×Ö·µ»Ø
 }
 
 
-function compareDate(dateOne,dateTwo)		//±È½ÏÁ½¸öÈÕÆÚ dateOne ´óÓÚ dateTwo ·µ»Ø1  Ğ¡ÓÚ ·µ»Ø-1  µÈÓÚ ·µ»Ø 0
+function compareDate(dateOne,dateTwo)		//æ¯”è¾ƒä¸¤ä¸ªæ—¥æœŸ dateOne å¤§äº dateTwo è¿”å›1  å°äº è¿”å›-1  ç­‰äº è¿”å› 0
 {
 	var yearOne=parseInt( dateOne.substring(0,4) );
 	var yearTwo=parseInt( dateTwo.substring(0,4) );
@@ -51,17 +52,17 @@ function compareDate(dateOne,dateTwo)		//±È½ÏÁ½¸öÈÕÆÚ dateOne ´óÓÚ dateTwo ·µ»Ø1
 var monthDays=[0,31,59,90,120,151,181,212,243,273,304,334];
 var maxDay=150;
 
-function getDifferentialDateWith2000(year,month,day) 		//Óë2000Äê1ÔÂ1ÈÕ²î¼¸Ìì
+function getDifferentialDateWith2000(year,month,day) 		//ä¸2000å¹´1æœˆ1æ—¥å·®å‡ å¤©
 {
 	var days=(year-2000)*365;				
-	days=days+Math.floor((year-2000)/4)+1;					//ÖĞ¼äÓĞ¼¸¸öÂÛÄê
-	if ((year-2000)%4==0 && month>2) days=days+1;			//2004Äê ÂÛÄê+1
+	days=days+Math.floor((year-2000)/4)+1;					//ä¸­é—´æœ‰å‡ ä¸ªè®ºå¹´
+	if ((year-2000)%4==0 && month>2) days=days+1;			//2004å¹´ è®ºå¹´+1
 	days=days+monthDays[month-1]+day;
 	return days;
 }
 
 
-function getDifferentialDate(dateOne,dateTwo)			//Á½¸öÈÕÆÚ²îÖµÔÚmaxDayÌìÒÔÄÚ ·µ»Ø²îÖµ  maxDayÌìÒÔÍâ Ö±½Ó·µ»ØmaxDay
+function getDifferentialDate(dateOne,dateTwo)			//ä¸¤ä¸ªæ—¥æœŸå·®å€¼åœ¨maxDayå¤©ä»¥å†… è¿”å›å·®å€¼  maxDayå¤©ä»¥å¤– ç›´æ¥è¿”å›maxDay
 {
 	var compareResult = compareDate(dateOne, dateTwo);
 	if (compareResult==0) return 0;
@@ -78,7 +79,7 @@ function getDifferentialDate(dateOne,dateTwo)			//Á½¸öÈÕÆÚ²îÖµÔÚmaxDayÌìÒÔÄÚ ·µ»
 	var dayOne=parseInt(dateOne.substring(7));
 	var dayTwo=parseInt(dateTwo.substring(7));
 
-	if (yearTwo-yearOne>=2) return maxDay;				//½ö½ö±È½ÏÄê²îÔÚÒ»ÄêÄÚµÄ
+	if (yearTwo-yearOne>=2) return maxDay;				//ä»…ä»…æ¯”è¾ƒå¹´å·®åœ¨ä¸€å¹´å†…çš„
 	var two=getDifferentialDateWith2000(yearTwo, monthTwo, dayTwo);
 	var one=getDifferentialDateWith2000(yearOne, monthOne, dayOne);
 
@@ -86,7 +87,7 @@ function getDifferentialDate(dateOne,dateTwo)			//Á½¸öÈÕÆÚ²îÖµÔÚmaxDayÌìÒÔÄÚ ·µ»
 	
 }
 
-function getEventDelayTime(repeatTime,maxRepeatTime,offsetTime,a)	//¼ÓËÙ¶È  Êı×ÖÔ½´ó ¼ÓËÙ¶ÈÔ½Âı
+function getEventDelayTime(repeatTime,maxRepeatTime,offsetTime,a)	//åŠ é€Ÿåº¦  æ•°å­—è¶Šå¤§ åŠ é€Ÿåº¦è¶Šæ…¢
 {
 	if (repeatTime<maxRepeatTime){
 		return Math.min(2,repeatTime*a);
@@ -151,9 +152,9 @@ function drawCircle(x,y,radius,context,alpha)
 
 function drawEventLable(x,y,context,eventLabel,alpha)
 {
-	var maxLabelLength=10;
+	var maxLabelLength=14;
 	if (eventLabel.length>maxLabelLength){
-		eventLabel=eventLabel.substring(0,maxLabelLength)+"...";
+		eventLabel=eventLabel.substring(0,maxLabelLength-2)+"...";
 	}
 	context.fillStyle="black";
 	context.globalAlpha=alpha;
@@ -179,16 +180,16 @@ var eventTimeLableHeight=25;
 var eventX=new Array();
 var radius;
 
-function getOffsetEventTime(repeatTime,maxRepeatTime,offsetEventTime,distance)									//·µ»Ø´ËÊ±offsetEventTime  Ò²¾ÍÊÇ ÕâÊ±ºòÊ±¼äµãÓ¦¸ÃÆ«ÒÆµÄÎ»ÖÃ 
-																												//repeatÒÑ¾­ÔËĞĞ´ÎÊı maxRepeatTime ×î´óÔËĞĞ´ÎÊı offsetEventTime Æ«ÒÆ×îÔ¶¾àÀë distanceĞèÒªÒÆ¶¯µÄ×î´ó¾àÀës
+function getOffsetEventTime(repeatTime,maxRepeatTime,offsetEventTime,distance)									//è¿”å›æ­¤æ—¶offsetEventTime  ä¹Ÿå°±æ˜¯ è¿™æ—¶å€™æ—¶é—´ç‚¹åº”è¯¥åç§»çš„ä½ç½® 
+																												//repeatå·²ç»è¿è¡Œæ¬¡æ•° maxRepeatTime æœ€å¤§è¿è¡Œæ¬¡æ•° offsetEventTime åç§»æœ€è¿œè·ç¦» distanceéœ€è¦ç§»åŠ¨çš„æœ€å¤§è·ç¦»s
 {
 	var offsetEventTime;
-	if (repeatTime>maxRepeatTime){		// Æ«ÒÆ
-		if (repeatTime>offsetEventTime+maxRepeatTime){	//»ØÀ´ÁË
+	if (repeatTime>maxRepeatTime){		// åç§»
+		if (repeatTime>offsetEventTime+maxRepeatTime){	//å›æ¥äº†
 			offsetEventTime=maxRepeatTime+offsetEventTime-( repeatTime-maxRepeatTime-offsetEventTime);
 			offsetEventTime=offsetEventTime/maxRepeatTime*distance;
 		}
-		else {											//ÍùÍâ¼ÌĞøÆ«ÒÆ
+		else {											//å¾€å¤–ç»§ç»­åç§»
 			offsetEventTime=repeatTime/maxRepeatTime*distance;
 		}
 	}
@@ -201,7 +202,7 @@ function getOffsetEventTime(repeatTime,maxRepeatTime,offsetEventTime,distance)		
 
 var selectEvent=1;
 
-function drawEvent(x,drawEventAlpha) {		//offsetEventTime ĞèÒªµÄÎ»ÖÃ	drawEventAlpha Ä¬ÈÏÍ¸Ã÷¶ÈµÄ°Ù·Ö±È
+function drawEvent(x,drawEventAlpha) {		//offsetEventTime éœ€è¦çš„ä½ç½®	drawEventAlpha é»˜è®¤é€æ˜åº¦çš„ç™¾åˆ†æ¯”
 	
 	var canvas=document.getElementById('timeEventsCanvas');
 	var ctx=canvas.getContext('2d');
@@ -247,7 +248,7 @@ function drawEvent(x,drawEventAlpha) {		//offsetEventTime ĞèÒªµÄÎ»ÖÃ	drawEventAl
 var changeRepeatTime=0;
 var isChange=false;
 
-function changeTime(startX,newX,maxRepeatTime,maxOffset){	//Ê±¼äµãÔË¶¯µ½newOffsetEventTime	//forward ÊÇ·ñÏòÇ°ÒÆ¶¯
+function changeTime(startX,newX,maxRepeatTime,maxOffset){	//æ—¶é—´ç‚¹è¿åŠ¨åˆ°newOffsetEventTime	//forward æ˜¯å¦å‘å‰ç§»åŠ¨
 	if (changeRepeatTime>=maxRepeatTime+maxOffset*2){							
 		isChange=false;
 		return ;
@@ -267,7 +268,7 @@ function changeTime(startX,newX,maxRepeatTime,maxOffset){	//Ê±¼äµãÔË¶¯µ½newOffse
 
 function clickTimeLine(e){
 	
-	if (isChange) return ;		//isChange±äÁ¿ÅĞ¶Ï¶¯»­ÊÇ·ñÔÚÖ´ĞĞÖĞ Èç¹ûÔÚÖ´ĞĞ ÔòÖ±½ÓÍË³ö
+	if (isChange) return ;		//isChangeå˜é‡åˆ¤æ–­åŠ¨ç”»æ˜¯å¦åœ¨æ‰§è¡Œä¸­ å¦‚æœåœ¨æ‰§è¡Œ åˆ™ç›´æ¥é€€å‡º
 	isChange=true;
 	var clickX=e.pageX-getLeft($(".timeLineCanvasDiv")) ;
 	for (var i=0; i<event.length; i++){
@@ -282,28 +283,28 @@ function clickTimeLine(e){
 				isChange=false;
 				return ;
 			}
-			changeSelectImage(i);				//È·¶¨µã»÷ÁËµÚi¸ö
+			changeSelectImage(i);				//ç¡®å®šç‚¹å‡»äº†ç¬¬iä¸ª
 			
-//			if (moveDistance<50){											//ÒÆ¶¯´úÂë
+//			if (moveDistance<50){											//ç§»åŠ¨ä»£ç 
 //				changeTime(nowOffsetEventTime,newX,moveDistance,5);
 //			}
 //			else {
 //				changeTime(nowOffsetEventTime,newX,Math.min(70,moveDistance),5);
 //			}
 			
-			drawEvent(eventX[0], 1);			//ÒÔÏÂÁ½¾ä»°ÊÇ·ÇÒÆ¶¯´úÂë
+			drawEvent(eventX[0], 1);			//ä»¥ä¸‹ä¸¤å¥è¯æ˜¯éç§»åŠ¨ä»£ç 
 			isChange=false;
 			return ;
 		}
 	}
-	isChange=false;	//Ã»ÓĞ±»µãµ½
+	isChange=false;	//æ²¡æœ‰è¢«ç‚¹åˆ°
 }
 
 
 function changeSelectImage(selectIndex)
 {
 	if (selectEvent==selectIndex) return ;
-	var isFirst=true;						//.eventImage »áÊ¹µÃÏÂÃæµÄfadeOutÖ´ĞĞ4´Î
+	var isFirst=true;						//.eventImage ä¼šä½¿å¾—ä¸‹é¢çš„fadeOutæ‰§è¡Œ4æ¬¡
 	selectEvent=selectIndex;
 	$(".eventImage").fadeOut("slow",function(){
 		if (isFirst){
@@ -319,11 +320,11 @@ function changeSelectImage(selectIndex)
 }
 
 
-function getEvent()		//»ñÈ¡ÓëeventÏà¹ØµÄ±äÁ¿
+function getEvent()		//è·å–ä¸eventç›¸å…³çš„å˜é‡
 {
 	$.post("Events/EventsItem.php",function(data){
 		var eventArray=data.split(';');
-		eventArray.pop();		//splite µÄÊ±ºò ¶àÁË×îºóÒ»¸öÔªËØ
+		eventArray.pop();		//splite çš„æ—¶å€™ å¤šäº†æœ€åä¸€ä¸ªå…ƒç´ 
 		for (var i=0; i<eventArray.length; i++){
 			var jsonObj=JSON.parse(eventArray[i]);
 			eventTime[i]=jsonObj.date;
@@ -349,13 +350,13 @@ function showImageAtIndex($indexImage)
 	$(".eventImageItemDiv").stop();
 	
 	$(".eventImageItemDiv").not($indexImage).animate({
-		"width":"246.8px",
+		"width":"247.2px",
 		"height":"341px",
 		"opacity":"0.2",
 	},"0.5");
 	
 	$indexImage.animate({
-		"width":"493.6px",
+		"width":"494.4px",
 		"height":"341px",
 		"opacity":"1",
 	},"0.5");
@@ -364,7 +365,7 @@ function showImageAtIndex($indexImage)
 $('.eventImageDiv').ready(function(){
 	
 	$(".eventImageItemDiv:last").css({
-		"width":"493.6px",
+		"width":"494.4px",
 		"height":"341px",
 		"opacity":"1",
 	});

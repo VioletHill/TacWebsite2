@@ -2,7 +2,7 @@
 
 include_once ('MembersBean.php');
 include_once ('DatabaseInfo.php');
-include_once ('../DatabaseInfo.php');	//¸øphpÂ·¾¶¹òÁË¡£¡£¡£¡£ ±ğµÄÎÄ¼şincludeÕâ¸öÎÄ¼ş  ÕâÊ±ºòÂ·¾¶ÊÇÏà¶ÔÓÚÄÇ¸öincludeÄãµÄÎÄ¼ş
+include_once ('../DatabaseInfo.php');	//ç»™phpè·¯å¾„è·ªäº†ã€‚ã€‚ã€‚ã€‚ åˆ«çš„æ–‡ä»¶includeè¿™ä¸ªæ–‡ä»¶  è¿™æ—¶å€™è·¯å¾„æ˜¯ç›¸å¯¹äºé‚£ä¸ªincludeä½ çš„æ–‡ä»¶
 
 class MembersDao 
 {
@@ -11,7 +11,7 @@ class MembersDao
 	private $con;
 	private $isConnect;
 	private $membersArray;
-	public static function sharedMembersDao() 			//µ¥ÀıÊ§Ğ§£¿  why£¿ ÄÑµÀÔÚ´«ËÍÍêÍøÒ³ÒÔºó ¾Í±»Ïú»ÙÁË£¿
+	public static function sharedMembersDao() 			//å•ä¾‹å¤±æ•ˆï¼Ÿ  whyï¼Ÿ éš¾é“åœ¨ä¼ é€å®Œç½‘é¡µä»¥å å°±è¢«é”€æ¯äº†ï¼Ÿ
 	{
 		if (self::$_sharedMembersDao == null) {
 			self::$_sharedMembersDao = new MembersDao();

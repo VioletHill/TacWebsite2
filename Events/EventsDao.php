@@ -2,7 +2,7 @@
 
 require_once ('EventsBean.php');
 include_once ('DatabaseInfo.php');
-include_once ('../DatabaseInfo.php');	//¸øphpÂ·¾¶¹òÁË¡£¡£¡£¡£ ±ğµÄÎÄ¼şincludeÕâ¸öÎÄ¼ş  ÕâÊ±ºòÂ·¾¶ÊÇÏà¶ÔÓÚÄÇ¸öincludeÄãµÄÎÄ¼ş
+include_once ('../DatabaseInfo.php');	//ç»™phpè·¯å¾„è·ªäº†ã€‚ã€‚ã€‚ã€‚ åˆ«çš„æ–‡ä»¶includeè¿™ä¸ªæ–‡ä»¶  è¿™æ—¶å€™è·¯å¾„æ˜¯ç›¸å¯¹äºé‚£ä¸ªincludeä½ çš„æ–‡ä»¶
 
 class EventsDao
 {

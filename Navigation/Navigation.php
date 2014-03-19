@@ -1,7 +1,7 @@
 	<div class="placeholder"></div>
     <div class="mainNavigationDiv">
     	<div class="logo">
-    		<img src="Navigation/Image/tacLogo.png" width="219px" height="40px" />
+    		
     	</div>
     	<div class="navigationMenu">
     		<script>

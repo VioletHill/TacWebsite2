@@ -64,7 +64,7 @@ class WorksDao
 			$work->setScreenShoot($row['ScreenShoot']);
 			$work->setItunsLink($row['ITunsLink']);
 			$work->setAuthor($row['Author']);
-			array_push($this->worksArray,$work);		
+			array_unshift($this->worksArray,$work);
 		}	
 		$this->closeDatabase();
 		return $this->worksArray;

@@ -6,33 +6,42 @@
 
 .mainNavigationDiv{
 	width:1236px;
-	height:40px;
+	height:60px;
 	background-color:white;
+	white-space:nowrap;
 }
 
 .logo{
 	display:inline-block;
 	width:219px;
-	height:40px;
+	height:50px;
+	margin-top:10px;
 	margin-left:200px;
+	text-align:center;
+	background-image:url('../Navigation/Image/tacLogo.png');
+	background-repeat:no-repeat;
 }
+
 
 .navigationMenu{
 	display:inline-block;
-	height:40px;
+	height:60px;
+	margin-left:50px;
 }
 
 .navigationItem{
 	float:left;
+	margin-top:10px;
+	margin-left:100px;
 	display:inline-block;
-	width:200px;
+	width:100px;
 	height:40px;
-	line-height:40px;
+	line-height:45px;
 	
 	text-align:center;
 
-	font-family:"Times New Roman";
-	font-size:20px;
+	font-family:"Myriad Pro" "Times New Roman";
+	font-size:18px;
 	color:#079fdd;
 	
 }

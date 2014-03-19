@@ -21,6 +21,10 @@ $(".homeDiv").ready(function(){
 	$(".homeSeeVideo").click(function(){
 		showVideo();
 	});
+	
+	$(".videoClose").click(function(){
+		videoEnd();
+	});
 });
 
 

@@ -14,8 +14,8 @@ function clickWorksItem($item)
 
 	var marginLeft=getLeft($('#worksDiv'))-itemLeft;
 	
-//	var marginTop=getTop($('#worksDiv'))-itemTop;  //≥ œ÷‘⁄worksDiv…œ
-	var marginTop=$('body').scrollTop()-itemTop;	//≥ œ÷‘⁄÷–º‰;
+//	var marginTop=getTop($('#worksDiv'))-itemTop;  //ÂëàÁé∞Âú®worksDiv‰∏ä
+	var marginTop=$('body').scrollTop()-itemTop;	//ÂëàÁé∞Âú®‰∏≠Èó¥;
 	var worksDivWidth=$('#worksDiv').width();
 	var worksDivHeight=$('#worksDiv').height();
 //	
@@ -168,13 +168,14 @@ function moveGallery(select)
 
 $(".worksDiv").ready(function(){
 	$(".worksItem").hover(function(){
-		$(this).css({'background':'url('+$(this).attr("iconHover")+')', 'background-size':'100% 100%','cursor':'pointer' });
+		//hover‰ª£Á†ÅÊöÇÊó∂Âõ†‰∏∫ËµÑÊ∫ê‰∏çË∂≥ ÂÖà‰∏çÂÅö 
+		//$(this).css({'background':'url('+$(this).attr("iconHover")+')', 'background-size':'100% 100%','cursor':'pointer' });
 	},function(){
-		$(this).css({'background':'url('+$(this).attr("icon")+')', 'background-size':'100% 100%','cursor':'default' });
+		$(this).css({'background':'url('+$(this).attr("icon")+')', 'background-size':'100% 100%','cursor':'default'});
 	});
 	
 	$(".worksItem").click(function(){
-		clickWorksItem($(this));
+		//clickWorksItem($(this));
 		
 	});
 	
@@ -188,7 +189,6 @@ $(".worksDiv").ready(function(){
 
 $(".itemShowDiv").ready(function(){
 	$(".closeShowItem").click(function(){
-		
 	});
 });
 

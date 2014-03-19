@@ -1,12 +1,11 @@
 
 
-<div id="startEvents"></div>
+<div id="startEvents" style="height:60px; margin-top:-60px"></div>
 <div class="eventsDiv">
-	<br>
 	<br>
 	<p class="startEventsTitle">EVENTS</p>
 	
-	<div class="timeLineCanvasDiv">		<!-- 响应点击事件 -->
+	<div class="timeLineCanvasDiv">		<!-- 鍝嶅簲鐐瑰嚮浜嬩欢 -->
 		<canvas id="timeLineCanvas" width="1234px" height="30px">
 		</canvas>
 		<canvas id="timeEventsCanvas" width="1234px" height="80px"> 

@@ -1,0 +1,79 @@
+.contactDiv{
+	width:1236px;
+	height:446px;
+	margin-top:-6px;
+	margin-left:auto;
+	margin-right:auto;
+	background-image:url('Image/contact.png');
+}
+
+.contactMessage{
+	width:620px;
+	height:100px;
+	resize:none;
+	padding:30px;
+	margin-left:500px;
+	margin-top:70px;
+	font-size:14px;
+	color:#ffffff;
+	background-color:#c4db90;
+	font-family:"Myriad Pro" "Times New Roman";
+	border:none;
+}
+
+.contactMessage:-moz-placeholder {
+	font-size:14px;
+	color:#e9f1d7;
+}
+::-webkit-input-placeholder { 
+	font-size:14px;
+	color:#e9f1d7;
+}
+
+.contactName{
+	margin-top:20px;
+	margin-left:500px;
+	width:320px;
+	height:40px;
+	background-color:#accd64;
+	border:none;
+	color:#ffffff;
+	text-align:center;
+	font-size:14px;
+}
+
+.contactEmail{
+	width:320px;
+	height:40px;
+	margin-left:26px;
+	background-color:#accd64;
+	border:none;
+	color:#ffffff;
+	text-align:center;
+	font-size:14px;
+}
+
+
+input:-moz-placeholder { 
+	color:#e9f1d7; 
+	text-align:center;
+	font-size:14px;
+}
+::-webkit-input-placeholder { 
+	color:#e9f1d7; 
+	text-align:center;
+}
+
+.sendEmail{
+	width:192px;
+	height:60px;
+	margin-left:500px;
+	margin-top:20px;
+	background-image:url('Image/sendMessage.png');
+	cursor:pointer;
+}
+
+.sendEmail:hover{
+	opacity:0.8;
+}
+
