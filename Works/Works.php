@@ -14,7 +14,7 @@
     				$worksArray=WorksDao::sharedWorksDao()->getAllData();
     				for ($i=1; $i<=(count($worksArray)-1)/$pageItemCount+1; $i++)
     				{
-    					echo "<span class=\"galleryMoveSpan\">";		
+    					echo "<div class=\"galleryMoveDiv\">";		
        					for ($j=($i-1)*$pageItemCount; $j<min($pageItemCount*$i,count($worksArray) ); $j++)
     					{
     						$item=$worksArray[$j];
@@ -23,9 +23,9 @@
     						
     						$itemHover=$item->getIconHover();
     						$itemLaunchImage=$item->getLaunchImage();
-    						echo  "<div class=\"worksItem\" style=\"background:url($itemIcon); background-repeat:no-repeat; background-size:100% 100%; \" id=\"$itemId\" icon=\"$itemIcon\" launchImage=\"$itemLaunchImage\"  iconHover=\"$itemHover\"></div>" ;		
+    						echo  "<div class=\"worksItem\" style=\"background:url($itemIcon); background-repeat:no-repeat; background-size:100% 100%; \" id=\"$itemId\" icon=\"$itemIcon\" launchImage=\"$itemLaunchImage\"  iconHover=\"$itemHover\"></div>" ;
     					}
-    					echo "</span>";
+    					echo "</div>";
     				}
     			?>
     		</div>

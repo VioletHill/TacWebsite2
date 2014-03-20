@@ -16,7 +16,7 @@
 }
 
 .galleryDiv{
-	width:945px;
+	width:960px;
 	height:600px;
 	margin-left:auto;
 	margin-right:auto;
@@ -34,8 +34,8 @@
 }
 
 
-.galleryMoveSpan{
-	width:945px;
+.galleryMoveDiv{
+	width:960px;
 	height:600px;
 	text-align:center;
 	position:relative;
@@ -43,13 +43,14 @@
 }
 
 .worksItem{
+	border:3px solid white;
 	width:300px;
 	height:250px;
-	margin-top:20px;
 	float:left;
-	overflow:hidden;	
-	margin-left:7px; 
+	margin-left:7px;
 	margin-right:7px;
+	margin-top:20px;
+	overflow:hidden;	
 	background-repeat:no-repeat;
 	background-size:100% 100%;
 }
