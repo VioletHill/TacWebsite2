@@ -7,9 +7,10 @@ var maxRepeatTimeLine=50;			//在线画出后 出现时间点的运动轨迹  �
 var maxRepeatTimeEvent=50;			//运动持续时间
 var maxOffsetTimeEvent=10;			//运动最大偏移
 var nowOffsetEventTime;
-var event=new Array();
+var events=new Array();
 var eventTime=new Array();
 var eventImage=new Array();
+var isEventOk=false;					//event数据是否加载完毕
 
 function getMonthNo(monthStr)			//根据一个month的字符串转化为数字返回
 {
@@ -97,9 +98,14 @@ function getEventDelayTime(repeatTime,maxRepeatTime,offsetTime,a)	//加速度  �
 	else return (maxRepeatTime+2*offsetTime-repeatTime)*a+2;
 }
 
-
 function showTimeLine()
 {
+	if (!isEventOk)				//等待加载数据
+	{
+		setTimeout("showTimeLine()",500);
+		return ;
+	}
+	
 	if (repeatTime>=maxRepeatTimeLine+maxRepeatTimeEvent+maxOffsetTimeEvent*2) return ;
 	drawTimeLine();
 
@@ -142,8 +148,9 @@ function drawTimeLine()
 	addLine(0, height/2, width, height/2, ctx);
 }
 
+var ix=0;
 function drawCircle(x,y,radius,context,alpha)
-{
+{	
 	context.globalAlpha=alpha;
 	context.arc(x,y,radius,0,Math.PI*2,true);
 	context.fill();
@@ -203,7 +210,7 @@ function getOffsetEventTime(repeatTime,maxRepeatTime,offsetEventTime,distance)		
 var selectEvent=1;
 
 function drawEvent(x,drawEventAlpha) {		//offsetEventTime 需要的位置	drawEventAlpha 默认透明度的百分比
-	
+
 	var canvas=document.getElementById('timeEventsCanvas');
 	var ctx=canvas.getContext('2d');
 	
@@ -214,7 +221,7 @@ function drawEvent(x,drawEventAlpha) {		//offsetEventTime 需要的位置	drawEv
 	
 	var circleAlpha;
 
-	for (var i=0; i<event.length; i++){
+	for (var i=0; i<events.length; i++){
 		if (i!=0){
 			var distanceX=getDifferentialDate(eventTime[i-1], eventTime[i]);
 			x+=Math.max(distanceX,70);
@@ -234,11 +241,11 @@ function drawEvent(x,drawEventAlpha) {		//offsetEventTime 需要的位置	drawEv
 		}
 		
 		ctx.beginPath();
-		drawCircle(x, height/2, radius, ctx,1*circleAlpha);
+		drawCircle(x, height/2, radius, ctx,circleAlpha);
 		if (selectEvent==i)	ctx.stroke();
 		
-		drawEventLable(x, height+eventLabelHeight-5, ctx,event[i],0.5*drawEventAlpha);
-		
+		drawEventLable(x, height+eventLabelHeight-5, ctx,events[i],0.5*drawEventAlpha);
+	
 		drawEventTimeLable(x, height+eventLabelHeight+eventTimeLableHeight-5, ctx, eventTime[i],0.5*drawEventAlpha);
 		
 		eventX[i]=x;
@@ -271,7 +278,7 @@ function clickTimeLine(e){
 	if (isChange) return ;		//isChange变量判断动画是否在执行中 如果在执行 则直接退出
 	isChange=true;
 	var clickX=e.pageX-getLeft($(".timeLineCanvasDiv")) ;
-	for (var i=0; i<event.length; i++){
+	for (var i=0; i<events.length; i++){
 		if (Math.abs(eventX[i]-clickX)<=radius){
 			
 			var midPoint=$(".timeLineCanvasDiv").width()/2;
@@ -328,8 +335,9 @@ function getEvent()		//获取与event相关的变量
 		for (var i=0; i<eventArray.length; i++){
 			var jsonObj=JSON.parse(eventArray[i]);
 			eventTime[i]=jsonObj.date;
-			event[i]=jsonObj.event;
+			events[i]=jsonObj.event;
 			eventImage[i]=jsonObj.eventImage;
+			isEventOk=true;
 		}
 	});
 }
