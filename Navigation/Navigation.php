@@ -8,8 +8,8 @@
     			resetNavigationDiv();
     		</script>
 
-    		<a href="#startWorks"><span class="navigationItem">WORKS</span></a>
-    		<a href="#startMembers"><span class="navigationItem">MEMBERS</span></a>
-    		<a href="#startEvents"><span class="navigationItem">EVENTS</span></a>
+    		<span class="navigationItem">Works</span>
+    		<span class="navigationItem">Members</span>
+    		<span class="navigationItem">Events</span>
     	</div>
     </div>
