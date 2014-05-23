@@ -20,6 +20,7 @@
 	text-align:center;
 	background-image:url('../Navigation/Image/tacLogo.png');
 	background-repeat:no-repeat;
+	cursor: pointer;
 }
 
 
@@ -27,6 +28,7 @@
 	display:inline-block;
 	height:60px;
 	margin-left:50px;
+	position: relative;
 }
 
 .navigationItem{
@@ -44,11 +46,42 @@
 	font-size:18px;
 	color:#079fdd;
 	
+	text-transform: uppercase;
+	cursor: pointer;
+
+	transition: all .5s;
+	-webkit-transition: all .5s;
+	-moz-transition: all .5s;
 }
 
-.navigationItem:hover{
+.navigationItem:hover, .navigationItem.selected{
+	/*border-radius:5px;*/
+	color:white;
+	/*background-color:#079fdd;*/
+	transition: all .5s;
+	-webkit-transition: all .5s;
+	-moz-transition: all .5s;
+}
+
+/*.navigationItem.selected {
+	border-radius:5px;
+	background-color:#079fdd;	
+}*/
+
+#navigationSprite {
+	position: absolute;
+	z-index: -1;
+	left: 100px;
+	width:100px;
+	height:40px;
+	margin-top:10px;
 	border-radius:5px;
 	color:white;
 	background-color:#079fdd;
+	opacity: 0;
+
+	transition: all .5s ease;
+	-webkit-transition: all .5s ease;
+	-moz-transition: all .5s ease;
 }
 

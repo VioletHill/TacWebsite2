@@ -66,15 +66,5 @@ function getLeft(elem){
 	return offset;
 }
 
-$(document).ready(function() {
-	$('.navigationItem').click(function() {
-		var dest = '#start' + $(this).html();
-		// console.log(dest);
-		$('html, documentElement').clearQueue().animate({
-    		scrollTop: $(dest).offset().top
- 		}, 1000);
-	});
-});
-
 
 

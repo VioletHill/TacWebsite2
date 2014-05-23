@@ -7,7 +7,7 @@
     		<script>
     			resetNavigationDiv();
     		</script>
-
+            <div id="navigationSprite"></div>
     		<span class="navigationItem">Works</span>
     		<span class="navigationItem">Members</span>
     		<span class="navigationItem">Events</span>
