@@ -9,7 +9,7 @@ function NavEffects() {
 /*------------------------------------------------------------------------*/
     function scrollWindowTo(target) {
         isNaving = true;
-        $('html, documentElement').clearQueue().animate({
+        $('html, documentElement, body').clearQueue().animate({
             scrollTop: target
         }, 1000, function(){isNaving = false;});        
     }
