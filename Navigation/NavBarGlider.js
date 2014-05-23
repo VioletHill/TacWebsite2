@@ -64,7 +64,7 @@ function NavEffects() {
                 if (selectedNode == null)
                     glider.css({opacity:1});
                 glider.css({left:moveTo});
-                if (selectedNode !== $(this) && selectedNode.hasClass("selected")) {
+                if (selectedNode && selectedNode !== $(this) && selectedNode.hasClass("selected")) {
                     selectedNode.removeClass("selected");
                 }
             });
@@ -75,7 +75,7 @@ function NavEffects() {
                 } else {
                     glider.css({left:relativeOffset(selectedNode)});
                 }
-                if (selectedNode !== $(this) && !selectedNode.hasClass("selected")) {
+                if (selectedNode && selectedNode !== $(this) && !selectedNode.hasClass("selected")) {
                     selectedNode.addClass("selected");
                 }
             });
