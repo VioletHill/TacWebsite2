@@ -19,6 +19,7 @@
 	
 	<script src="jQuery-2.0.2.js"></script>
 	<script src="Navigation/Navigation.js"></script>
+    <script src="Navigation/NavBarGlider.js"></script>
 	<script src="Home/Home.js"></script>
 	<script src="Works/Works.js"></script>
 	<script src="Members/Members.js"></script>
